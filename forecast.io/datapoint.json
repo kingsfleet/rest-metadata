@@ -5,7 +5,7 @@
     "id" : "datapoint",
     "properties" : {
         "time" : {
-            "type" : "utc-millisec",
+            "type" : "number",
             "required" : true
         },
         "cloudCover" : {
@@ -53,7 +53,7 @@
             "required" : false
         },
         "temperatureMinTime" : {
-            "type" : "utc-millisec",
+            "type" : "number",
             "required" : false
         },
         "temperatureMax" : {
@@ -61,7 +61,7 @@
             "required" : false
         },
         "temperatureMaxTime" : {
-            "type" : "utc-millisec",
+            "type" : "number",
             "required" : false
         }
     }
