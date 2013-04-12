@@ -1,17 +1,15 @@
 {
     "type" : "object",
     "$schema" : "http://json-schema.org/draft-03/schema",
-    "id" : "forcast",
-    "required" : false,
+    "id" : "forecast",
     "properties" : {
-
         "latitude" : {
             "type" : "number",
-            "required" : false
+            "required" : true
         },
         "longitude" : {
             "type" : "number",
-            "required" : false
+            "required" : true
         },
         "offset" : {
             "type" : "number",
@@ -19,9 +17,8 @@
         },
         "timezone" : {
             "type" : "string",
-            "required" : false
+            "required" : true
         },
-
         "currently" : {
             "$ref" : "datapoint.json",
             "required" : false
@@ -37,35 +34,36 @@
         "daily" : {
             "$ref" : "datablock.json",
             "required" : false
-            
         },
         "alerts" : {
             "type" : "array",
             "required" : "false",
             "items" : {
-              "type" : "object",
-              "id" : "alert",
-              "properties" : {
-                "title" : {
-                    "type" : "string",
-                    "required" : true
-                },
-                "expires" : {
-                    "type" : "utc-millisec",
-                    "required" : false
-                },
-                "uri" : {
-                    "type" : "uri",
-                    "required" : true
+                "type" : "object",
+                "properties" : {
+                    "title" : {
+                        "type" : "string",
+                        "required" : true
+                    },
+                    "expires" : {
+                        "type" : "number",
+                        "required" : true
+                    },
+                    "uri" : {
+                        "type" : "uri",
+                        "required" : true
+                    }
                 }
-              }
             }
         },
-        
         "flags" : {
             "type" : "object",
             "required" : false,
             "properties" : {
+                "darksky-unavailable" : {
+                    "type" : "string",
+                    "required" : false
+                },
                 "darksky-stations" : {
                     "type" : "array",
                     "required" : false,
@@ -100,7 +98,6 @@
                 },
                 "metar-stations" : {
                     "type" : "array",
-                    "id" : "flags/metar-stations",
                     "required" : false,
                     "items" : {
                         "type" : "string",
@@ -123,12 +120,7 @@
                     "type" : "string",
                     "required" : false
                 }
-
             }
         }
-        
-        
     }
-    
-    
 }
