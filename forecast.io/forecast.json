@@ -1,0 +1,134 @@
+{
+    "type" : "object",
+    "$schema" : "http://json-schema.org/draft-03/schema",
+    "id" : "forcast",
+    "required" : false,
+    "properties" : {
+
+        "latitude" : {
+            "type" : "number",
+            "required" : false
+        },
+        "longitude" : {
+            "type" : "number",
+            "required" : false
+        },
+        "offset" : {
+            "type" : "number",
+            "required" : false
+        },
+        "timezone" : {
+            "type" : "string",
+            "required" : false
+        },
+
+        "currently" : {
+            "$ref" : "datapoint.json",
+            "required" : false
+        },
+        "minutely" : {
+            "$ref" : "datablock.json",
+            "required" : false
+        },
+        "hourly" : {
+            "$ref" : "datablock.json",
+            "required" : false
+        },
+        "daily" : {
+            "$ref" : "datablock.json",
+            "required" : false
+            
+        },
+        "alerts" : {
+            "type" : "array",
+            "required" : "false",
+            "items" : {
+              "type" : "object",
+              "id" : "alert",
+              "properties" : {
+                "title" : {
+                    "type" : "string",
+                    "required" : true
+                },
+                "expires" : {
+                    "type" : "utc-millisec",
+                    "required" : false
+                },
+                "uri" : {
+                    "type" : "uri",
+                    "required" : true
+                }
+              }
+            }
+        },
+        
+        "flags" : {
+            "type" : "object",
+            "required" : false,
+            "properties" : {
+                "darksky-stations" : {
+                    "type" : "array",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "datapoint-stations" : {
+                    "type" : "array",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "isd-stations" : {
+                    "type" : "array",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "lamp-stations" : {
+                    "type" : "array",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "metar-stations" : {
+                    "type" : "array",
+                    "id" : "flags/metar-stations",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "sources" : {
+                    "type" : "array",
+                    "required" : false,
+                    "items" : {
+                        "type" : "string",
+                        "required" : false
+                    }
+                },
+                "metno-license" : {
+                    "type" : "string",
+                    "required" : false
+                },
+                "units" : {
+                    "type" : "string",
+                    "required" : false
+                }
+
+            }
+        }
+        
+        
+    }
+    
+    
+}

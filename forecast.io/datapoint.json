@@ -1,0 +1,74 @@
+{
+    "type" : "object",
+    "$schema" : "http://json-schema.org/draft-03/schema",
+    "required" : false,
+    "id" : "datapoint",
+    "properties" : {
+        "time" : {
+            "type" : "utc-millisec",
+            "required" : true
+        },
+        "cloudCover" : {
+            "type" : "number",
+            "required" : false
+        },
+        "humidity" : {
+            "type" : "number",
+            "required" : false
+        },
+        "icon" : {
+            "type" : "string",
+            "required" : false
+        },
+        "precipIntensity" : {
+            "type" : "number",
+            "required" : false
+        },
+        "pressure" : {
+            "type" : "number",
+            "required" : false
+        },
+        "summary" : {
+            "type" : "string",
+            "required" : false
+        },
+        "temperature" : {
+            "type" : "number",
+            "required" : false
+        },
+        "visibility" : {
+            "type" : "number",
+            "required" : false
+        },
+        "windBearing" : {
+            "type" : "number",
+            "required" : false
+        },
+        "windSpeed" : {
+            "type" : "number",
+            "required" : false
+        },
+        "temperatureMin" : {
+            "type" : "number",
+            "required" : false
+        },
+        "temperatureMinTime" : {
+            "type" : "utc-millisec",
+            "required" : false
+        },
+        "temperatureMax" : {
+            "type" : "number",
+            "required" : false
+        },
+        "temperatureMaxTime" : {
+            "type" : "utc-millisec",
+            "required" : false
+        }
+    }
+    
+    
+    
+    
+
+    
+}

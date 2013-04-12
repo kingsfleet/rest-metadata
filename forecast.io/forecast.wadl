@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application xmlns="http://wadl.dev.java.net/2009/02"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:json="http://wadl.dev.java.net/2009/02/json-schema">
+  <doc>A describe of the REST provided by forecast.io</doc>
+  <resources base="https://api.forecast.io/forecast">
+    <resource path="{apikey}">
+      <param name="apikey" style="template">
+        <doc>This is the forecast.io API key used to control access to the server, 
+you can get an API key from http://developer.forecast.io</doc>
+      </param>
+      <resource path="{latitude},{longitude}">
+          <param href="#latitude" />
+          <param href="#longitude" />
+          <method href="#getReport"/>
+      </resource>
+      <resource path="{latitude},{longitude},{time}">
+          <param href="#latitude" />
+          <param href="#longitude" />
+          <param name="time" style="template" type="xs:nonNegativeInteger" required="true">
+            <doc>The date of the weather forcate expressed in Unix time</doc>
+          </param>
+          <method href="#getReport"/>
+      </resource>
+    </resource>
+  </resources>
+
+
+
+
+  <param id="latitude" name="latitude" style="template" type="xs:decimal" required="true">
+    <doc>The latitude of the weather report request</doc>
+  </param>
+  <param id="longitude" name="longitude" style="template" type="xs:decimal" required="true">
+    <doc>The longitude of the weather report request</doc>
+  </param>
+
+
+  <method name="GET" id="getReport">
+    <request>
+      <param name="callback" style="query" type="xs:string" required="false">
+        <doc>The callback for the purposes of JSONP</doc>
+      </param>
+      <param name="units" style="query" type="xs:string" required="false" default="us">
+        <doc>The units to be used to render the weather data</doc>
+        <option value="us"><doc>Default using US Imperial units</doc></option>
+        <option value="si"><doc>SI units</doc></option>
+        <option value="ca"><doc>Identical to si, except windSpeed is in kph</doc></option>
+        <option value="uk"><doc>Identical to si, except windSpeed is in mph</doc></option>
+        <option value="auto"><doc>Selected based on geo-location</doc></option>
+      </param>
+      <param name="exclude" style="query" type="xs:string" required="false">
+        <doc>A comma delimeted list, of any of the following" currently, minutely, daily, alerts, flags</doc>
+      </param>
+    </request>
+    <response status="200">
+       <representation mediaType="application/json" json:describedby="forecast.json">
+       </representation>
+    </response>
+  </method>
+
+</application>
