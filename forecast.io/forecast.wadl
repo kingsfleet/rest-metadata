@@ -18,7 +18,7 @@ you can get an API key from http://developer.forecast.io</doc>
           <param href="#latitude" />
           <param href="#longitude" />
           <param name="time" style="template" type="xs:nonNegativeInteger" required="true">
-            <doc>The date of the weather forcate expressed in Unix time</doc>
+            <doc>The date of the weather forecast expressed in Unix time in seconds</doc>
           </param>
           <method href="#getReport"/>
       </resource>
