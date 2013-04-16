@@ -1,0 +1,118 @@
+<!--
+The contents of this file are subject to the terms
+of the Common Development and Distribution License
+(the "License").  You may not use this file except
+in compliance with the License.
+
+You can obtain a copy of the license at
+http://www.opensource.org/licenses/cddl1.php
+See the License for the specific language governing
+permissions and limitations under the License.
+-->
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+    <xsd:annotation>
+        <xsd:documentation>This Schema was generated from example scheduling information takenfrom the BBC website, it may not be complete and should not be used forproduction systems.</xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="service">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="title" type="xsd:string"/>
+                <xsd:element name="outlet">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="title" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="key" type="xsd:string"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="type" type="xsd:string"/>
+            <xsd:attribute name="key" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="programme">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="pid" type="xsd:string"/>
+                <xsd:element name="position"/>
+                <xsd:element name="title" type="xsd:string"/>
+                <xsd:element name="short_synopsis" type="xsd:string"/>
+                <xsd:element name="media_type" type="xsd:string"/>
+                <xsd:element name="duration" type="xsd:integer"/>
+                <xsd:element name="display_titles">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="title" type="xsd:string"/>
+                            <xsd:element name="subtitle" type="xsd:string"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="expected_child_count"/>
+                <xsd:element name="first_broadcast_date" type="xsd:dateTime"/>
+                <xsd:element name="ownership">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="service"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="programme"/>
+                <xsd:element name="available_until" minOccurs="0" type="xsd:dateTime"/>
+                <xsd:element name="actual_start" minOccurs="0" type="xsd:dateTime"/>
+                <xsd:element name="is_available_mediaset_pc_sd" type="xsd:integer"/>
+                <xsd:element name="is_legacy_media" type="xsd:integer"/>
+                <xsd:element name="media" minOccurs="0">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="expires" type="xsd:dateTime"/>
+                            <xsd:element name="availability" type="xsd:string"/>
+                        </xsd:sequence>
+                        <xsd:attribute name="format" type="xsd:string"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="type" type="xsd:string"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="broadcast">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="pid" type="xsd:string"/>
+                <xsd:element name="start" type="xsd:dateTime"/>
+                <xsd:element name="end" type="xsd:dateTime"/>
+                <xsd:element name="duration" type="xsd:integer"/>
+                <xsd:element ref="programme"/>
+            </xsd:sequence>
+            <xsd:attribute name="is_repeat" type="xsd:integer"/>
+            <xsd:attribute name="is_blanked" type="xsd:integer"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="broadcasts">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="broadcast" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="day">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="broadcasts"/>
+            </xsd:sequence>
+            <xsd:attribute name="date" type="xsd:date"/>
+            <xsd:attribute name="has_next" type="xsd:integer"/>
+            <xsd:attribute name="has_previous" type="xsd:integer"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <xsd:element name="schedule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="service"/> 
+                <xsd:element ref="day" maxOccurs="unbounded" minOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
