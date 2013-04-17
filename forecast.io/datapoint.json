@@ -95,6 +95,14 @@
             "type" : "number",
             "required" : false
         },
+        "dewPoint" : {
+            "type" : "number",
+            "required" : false
+        },
+        "dewPointError" : {
+            "type" : "number",
+            "required" : false
+        },
         "windSpeed" : {
             "type" : "number",
             "required" : false
@@ -140,6 +148,14 @@
             "required" : false
         },
         "visibilityError" : {
+            "type" : "number",
+            "required" : false
+        },
+        "ozone" : {
+            "type" : "number",
+            "required" : false
+        },
+        "ozoneError" : {
             "type" : "number",
             "required" : false
         }
