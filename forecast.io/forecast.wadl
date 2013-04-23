@@ -50,7 +50,7 @@ you can get an API key from http://developer.forecast.io</doc>
         <option value="auto"><doc>Selected based on geo-location</doc></option>
       </param>
       <param name="exclude" style="query" type="xs:string" required="false">
-        <doc>A comma delimeted list, of any of the following" currently, minutely, daily, alerts, flags</doc>
+        <doc>A comma delimeted list, of any of the following" currently, minutely, hourly, daily, alerts, flags</doc>
       </param>
     </request>
     <response status="200">
