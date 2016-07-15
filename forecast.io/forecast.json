@@ -37,7 +37,7 @@
         },
         "alerts" : {
             "type" : "array",
-            "required" : "false",
+            "required" : false,
             "items" : {
                 "type" : "object",
                 "properties" : {
